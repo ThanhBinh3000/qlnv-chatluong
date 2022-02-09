@@ -20,5 +20,6 @@ public class PathContains {
 	// 6.1 Quan ly chat luong hang
 	public static final String QL_CHAT_LUONG_HANG = "/ql-chat-luong-hang";
 	public static final String PHIEU_KNGHIEM_CLH = "/phieu-knghiem";
+	public static final String PHIEU_KTRA_CLH = "/phieu-ktcl";
 
 }
