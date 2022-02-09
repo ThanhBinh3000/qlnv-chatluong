@@ -21,9 +21,10 @@ public class Contains {
 	public static final String CCUC_DUYET = "06";
 	public static final String CUC_DUYET = "07";
 	public static final String TCUC_DUYET = "08";
-	public static final String TK_DUYET = "06";// Trang thai trung gian, thu kho phe duyet
-	public static final String KTV_DUYET = "07";// Trang thai trung gian, ky thuat vien phe duyet
-	public static final String KTT_DUYET = "08";// Trang thai trung gian, ke toan truong phe duyet
+	public static final String TK_DUYET = "09";// Trang thai trung gian, thu kho phe duyet
+	public static final String KTV_DUYET = "10";// Trang thai trung gian, ky thuat vien phe duyet
+	public static final String KTT_DUYET = "11";// Trang thai trung gian, ke toan truong phe duyet
+	public static final String KT_DUYET = "12";
 
 	// Loai nhap xuat
 	public static final String LOAI_NHAP = "N";
