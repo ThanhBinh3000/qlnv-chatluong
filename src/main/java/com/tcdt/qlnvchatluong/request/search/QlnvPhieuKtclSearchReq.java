@@ -4,7 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tcdt.qlnvchatluong.request.BaseRequest;
@@ -35,5 +37,9 @@ public class QlnvPhieuKtclSearchReq extends BaseRequest {
 	@Past
 	@Temporal(TemporalType.DATE)
 	Date denNgayKtra;
+	
+	@NotNull(message = "Không được để trống")
+	@Size(max = 02, message = "Loại biên bản không được vượt quá 02 ký tự")
+	String loaiBban;
 
 }

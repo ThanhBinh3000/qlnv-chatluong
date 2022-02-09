@@ -67,8 +67,10 @@ public class QlnvPhieuKtclHdr implements Serializable {
 	Long lanSuaChua;
 	Long lanKtra;
 	Date ngayHhanBhanh;
+	String loaiBban;
 	String ktvPduyet;
 	Date ngayKtvPduyet;
+	Date ngayHdong;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Fetch(value = FetchMode.SUBSELECT)

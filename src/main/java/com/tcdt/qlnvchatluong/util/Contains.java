@@ -24,7 +24,6 @@ public class Contains {
 	public static final String TK_DUYET = "09";// Trang thai trung gian, thu kho phe duyet
 	public static final String KTV_DUYET = "10";// Trang thai trung gian, ky thuat vien phe duyet
 	public static final String KTT_DUYET = "11";// Trang thai trung gian, ke toan truong phe duyet
-	public static final String KT_DUYET = "12";
 
 	// Loai nhap xuat
 	public static final String LOAI_NHAP = "N";
@@ -42,5 +41,10 @@ public class Contains {
 	public static final String PHIEU_NX = "PH";
 	public static final String BANG_KE = "BK";
 	public static final String BIEN_BAN = "BB";
+	
+	// Loai bien ban kiem tra chat luong
+	public static final String BB_KTCL_HANG = "00";
+	public static final String BB_KTCL_VAT_TU = "01";
+	public static final String BB_KTCL_HU_HONG = "02";
 
 }

@@ -41,6 +41,7 @@ public class QlnvPhieuKtclHdrSpecification {
 				String maLo = objReq.getMaLo();
 				Date tuNgayKtra = objReq.getTuNgayKtra();
 				Date denNgayKtra = objReq.getDenNgayKtra();
+				String loaiBban = objReq.getLoaiBban();
 
 				root.fetch("children", JoinType.LEFT);
 
@@ -59,6 +60,9 @@ public class QlnvPhieuKtclHdrSpecification {
 
 				if (StringUtils.isNotBlank(maLo))
 					predicate.getExpressions().add(builder.and(builder.equal(root.get("maLo"), maLo)));
+				
+				if (StringUtils.isNotBlank(loaiBban))
+					predicate.getExpressions().add(builder.and(builder.equal(root.get("loaiBban"), loaiBban)));
 
 				if (ObjectUtils.isNotEmpty(tuNgayKtra) && ObjectUtils.isNotEmpty(denNgayKtra)) {
 					predicate.getExpressions()

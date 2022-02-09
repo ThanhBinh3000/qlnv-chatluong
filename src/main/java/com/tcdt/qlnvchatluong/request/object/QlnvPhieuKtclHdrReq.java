@@ -62,7 +62,7 @@ public class QlnvPhieuKtclHdrReq {
 	@Past
 	Date ngayHhanBhanh;
 
-	@NotNull(message = "Không được để trống")
+	//@NotNull(message = "Không được để trống")
 	@Size(max = 2, message = "Trạng thái không được vượt quá 2 ký tự")
 	String trangThai;
 
@@ -77,5 +77,7 @@ public class QlnvPhieuKtclHdrReq {
 	@Size(max = 250, message = "Lý do từ chối không được vượt quá 250 ký tự")
 	String ldoTuchoi;
 
+	String loaiBban;
+	
 	private List<QlnvPhieuKtclDtlReq> detail;
 }
