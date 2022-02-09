@@ -21,5 +21,6 @@ public class PathContains {
 	public static final String QL_CHAT_LUONG_HANG = "/ql-chat-luong-hang";
 	public static final String PHIEU_KNGHIEM_CLH = "/phieu-knghiem";
 	public static final String PHIEU_KTRA_CLH = "/phieu-ktcl";
+	public static final String BB_NGHIEMTHU_KLOT = "/bban-nghiemthu-klot";
 
 }

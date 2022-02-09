@@ -34,4 +34,12 @@ public class Contains {
 	public static final String CAP_CUC = "2";
 	public static final String CAP_CHI_CUC = "3";
 
+	// Dinh nghia code gen key
+	public static final String QUYET_DINH = "QD";
+	public static final String QUYET_DINH_DC = "DC";
+	public static final String HOP_DONG = "HD";
+	public static final String PHIEU_NX = "PH";
+	public static final String BANG_KE = "BK";
+	public static final String BIEN_BAN = "BB";
+
 }
