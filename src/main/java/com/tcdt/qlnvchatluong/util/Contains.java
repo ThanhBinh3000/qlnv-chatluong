@@ -47,4 +47,6 @@ public class Contains {
 	public static final String BB_KTCL_VAT_TU = "01";
 	public static final String BB_KTCL_HU_HONG = "02";
 
+	// Hop Dong: Loai tai san
+	public static final String HD_CONG_CU_DUNG_CU = "00";
 }
