@@ -53,4 +53,6 @@ public class Contains {
 	public static final String DUNG_AP_DUNG = "01";
 
 
+	// Hop Dong: Loai tai san
+	public static final String HD_CONG_CU_DUNG_CU = "00";
 }
