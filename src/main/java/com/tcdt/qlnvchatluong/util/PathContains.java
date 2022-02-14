@@ -33,4 +33,5 @@ public class PathContains {
 	public static final String HOP_DONG = "/hop-dong";
 	public static final String PHAN_BO_CCDC = "/phan-bo-ccdc";
 	public static final String HO_SO_KY_THUAT = "/hoso-kythuat";
+	public static final String QDINH_MMOC_TBI = "/qdinh-mmoc-tbi";
 }
