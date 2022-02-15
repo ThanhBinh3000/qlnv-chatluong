@@ -32,6 +32,7 @@ public class PathContains {
 	public static final String KQ_BAO_HANH = "/kqua-bao-hanh";
 	public static final String HOP_DONG = "/hop-dong";
 	public static final String PHAN_BO_CCDC = "/phan-bo-ccdc";
+	public static final String BB_GIAO_NHAN_TAI_SAN = "/bb-giao-nhan-tai-san";
 	public static final String HO_SO_KY_THUAT = "/hoso-kythuat";
 	public static final String QDINH_MMOC_TBI = "/qdinh-mmoc-tbi";
 	public static final String TTRANG_TAISAN = "/ttrang-taisan";
