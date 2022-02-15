@@ -35,5 +35,8 @@ public class PathContains {
 
 	// 6.5	 Quản lý nhu cầu tham gia bảo hiểm
 	public static final String QL_GIA_TRI_BAO_HIEM = "/ql-gia-tri-bao-hiem";
+	public static final String HO_SO_KY_THUAT = "/hoso-kythuat";
+	public static final String QDINH_MMOC_TBI = "/qdinh-mmoc-tbi";
+	public static final String TTRANG_TAISAN = "/ttrang-taisan";
 
 }
