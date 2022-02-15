@@ -55,4 +55,9 @@ public class Contains {
 
 	// Hop Dong: Loai tai san
 	public static final String HD_CONG_CU_DUNG_CU = "00";
+
+	// Tinh trang tai san
+	public static final String SU_DUNG_DUOC = "Sử dụng được";
+	public static final String DA_HONG = "Đã hỏng";
+
 }
