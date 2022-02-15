@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.tcdt.qlnvchatluong.request.search.QlnvKquaBhanhSearchReq;
@@ -51,12 +52,12 @@ public class QlnvKquaBhanhSpecification {
 				if (ObjectUtils.isNotEmpty(tuNgayBhanh) && ObjectUtils.isNotEmpty(denNgayBhanh)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayBhanh"), tuNgayBhanh)));
-					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayBhanh"), denNgayBhanh)));
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayBhanh"), new DateTime(denNgayBhanh).plusDays(1).toDate())));
 				} else if (ObjectUtils.isNotEmpty(tuNgayBhanh)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayBhanh"), tuNgayBhanh)));
 				} else if (ObjectUtils.isNotEmpty(denNgayBhanh)) {
-					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayBhanh"), denNgayBhanh)));
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayBhanh"), new DateTime(denNgayBhanh).plusDays(1).toDate())));
 				}
 
 				return predicate;

@@ -54,11 +54,16 @@ public class QlnvPhieuYcktclHdrSpecification {
 				if (StringUtils.isNotBlank(maLo))
 					predicate.getExpressions().add(builder.and(builder.equal(root.get("maLo"), maLo)));
 				
+
 				if (ObjectUtils.isNotEmpty(tuNgayKtra) && ObjectUtils.isNotEmpty(denNgayKtra)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayKtra"), tuNgayKtra)));
-					predicate.getExpressions().add(builder.and(
-							builder.lessThan(root.get("ngayKtra"), new DateTime(denNgayKtra).plusDays(1).toDate())));
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayKtra"), new DateTime(denNgayKtra).plusDays(1).toDate())));
+				} else if (ObjectUtils.isNotEmpty(tuNgayKtra)) {
+					predicate.getExpressions()
+							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayKtra"), tuNgayKtra)));
+				} else if (ObjectUtils.isNotEmpty(denNgayKtra)) {
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayKtra"), new DateTime(denNgayKtra).plusDays(1).toDate())));
 				}
 
 				return predicate;

@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.tcdt.qlnvchatluong.request.IdSearchReq;
@@ -63,42 +64,13 @@ public class QlnvBbanCbiKhoHdrSpecification {
 				if (ObjectUtils.isNotEmpty(tuNgayLap) && ObjectUtils.isNotEmpty(denNgayLap)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayLap"), tuNgayLap)));
-					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayLap"), denNgayLap)));
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayLap"), new DateTime(denNgayLap).plusDays(1).toDate())));
 				} else if (ObjectUtils.isNotEmpty(tuNgayLap)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayLap"), tuNgayLap)));
 				} else if (ObjectUtils.isNotEmpty(denNgayLap)) {
-					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayLap"), denNgayLap)));
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayLap"), new DateTime(denNgayLap).plusDays(1).toDate())));
 				}
-
-				return predicate;
-			}
-		};
-	}
-
-	public static Specification<QlnvBbanNtkklHdr> buildFindByIdQuery(final @Valid IdSearchReq objReq) {
-		return new Specification<QlnvBbanNtkklHdr>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -1609160279354911278L;
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public Predicate toPredicate(Root<QlnvBbanNtkklHdr> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
-				Predicate predicate = builder.conjunction();
-				if (ObjectUtils.isEmpty(objReq))
-					return predicate;
-
-				Long id = objReq.getId();
-				String maDvi = objReq.getMaDvi();
-
-				Join<Object, Object> fetchParent = (Join<Object, Object>) root.fetch("children", JoinType.LEFT);
-
-				predicate.getExpressions().add(builder.and(builder.equal(root.get("id"), id)));
-				if (StringUtils.isNotBlank(maDvi))
-					predicate.getExpressions().add(builder.and(builder.equal(fetchParent.get("maDvi"), maDvi)));
 
 				return predicate;
 			}
