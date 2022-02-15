@@ -24,4 +24,8 @@ public class PathContains {
 	public static final String BB_NGHIEMTHU_KLOT = "/bban-nghiemthu-klot";
 	public static final String HO_SO_KY_THUAT = "/hoso-kythuat";
 
+	// 6.2 Quan ly cong cu dung cu va mang PVC
+	public static final String QL_CONG_CU = "/ql-ccu";
+	public static final String QL_DMUC_TSAN = "/ql-dmuc-tsan";
+
 }

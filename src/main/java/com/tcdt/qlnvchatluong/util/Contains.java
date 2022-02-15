@@ -1,5 +1,7 @@
 package com.tcdt.qlnvchatluong.util;
 
+import java.util.Map;
+
 public class Contains {
 	public static final String FORMAT_DATE_STR = "dd/MM/yyyy";
 	public static final String FORMAT_DATE_TIME_STR = "dd/MM/yyyy HH:mm:ss";
@@ -42,5 +44,24 @@ public class Contains {
 	public static final String BANG_KE = "BK";
 	public static final String BIEN_BAN = "BB";
 	public static final String HO_SO = "HS";
+
+	// Trang thai dinh muc
+	public static final String TT_DMUC_APDUNG = "00";// ap dung
+	public static final String TT_DMUC_DUNG = "01";// dung ap dung
+
+	// Loai dinh muc
+	public static final String DINHMUC_NHAP = "00";
+	public static final String DINHMUC_XUAT = "01";
+	public static final String DINHMUC_BQUAN = "02";
+
+	public static final Map<String, String> mpLoaiDmuc;
+	static {
+		mpLoaiDmuc = Maps.<String, String>buildMap().put(Contains.DINHMUC_NHAP, "Nhập")
+				.put(Contains.DINHMUC_XUAT, "Xuất").put(Contains.DINHMUC_BQUAN, "Bảo quản").get();
+	}
+
+	public static String getLoaiDmuc(String key) {
+		return Contains.mpLoaiDmuc.get(key);
+	}
 
 }
