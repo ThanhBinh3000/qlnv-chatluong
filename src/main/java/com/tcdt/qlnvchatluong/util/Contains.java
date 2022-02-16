@@ -45,6 +45,15 @@ public class Contains {
 	public static final String BIEN_BAN = "BB";
 	public static final String HO_SO = "HS";
 
+	// Loai dinh muc
+	public static final String XUAT = "00";
+	public static final String NHAP = "01";
+	public static final String BAO_QUAN = "02";
+
+	// Trang thai
+	public static final String AP_DUNG = "00";
+	public static final String DUNG_AP_DUNG = "01";
+
 	// Loai bien ban kiem tra chat luong
 	public static final String BB_KTCL_HANG = "00";
 	public static final String BB_KTCL_VAT_TU = "01";
