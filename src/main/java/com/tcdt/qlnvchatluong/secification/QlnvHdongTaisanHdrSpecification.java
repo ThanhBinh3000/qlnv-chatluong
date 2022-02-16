@@ -4,6 +4,7 @@ import com.tcdt.qlnvchatluong.request.search.QlnvHdongTaisanSearchReq;
 import com.tcdt.qlnvchatluong.table.QlnvHdongTaisanHdr;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -46,12 +47,12 @@ public class QlnvHdongTaisanHdrSpecification {
                     if (ObjectUtils.isNotEmpty(tuNgayHdong) && ObjectUtils.isNotEmpty(denNgayHdong)) {
                         predicate.getExpressions()
                                 .add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayHdong"), tuNgayHdong)));
-                        predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayHdong"), denNgayHdong)));
+                        predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayHdong"), new DateTime(denNgayHdong).plusDays(1).toDate())));
                     } else if (ObjectUtils.isNotEmpty(tuNgayHdong)) {
                         predicate.getExpressions()
                                 .add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayHdong"), tuNgayHdong)));
                     } else if (ObjectUtils.isNotEmpty(denNgayHdong)) {
-                        predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayHdong"), denNgayHdong)));
+                        predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayHdong"), new DateTime(denNgayHdong).plusDays(1).toDate())));
                     }
 
                     return predicate;

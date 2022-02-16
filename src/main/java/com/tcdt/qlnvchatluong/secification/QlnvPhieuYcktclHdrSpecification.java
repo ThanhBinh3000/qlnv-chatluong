@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -15,21 +14,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.Specification;
 
-import com.tcdt.qlnvchatluong.request.IdSearchReq;
-import com.tcdt.qlnvchatluong.request.search.QlnvPhieuKtclSearchReq;
-import com.tcdt.qlnvchatluong.table.QlnvPhieuKtclHdr;
+import com.tcdt.qlnvchatluong.request.search.QlnvPhieuYcktclSearchReq;
+import com.tcdt.qlnvchatluong.table.QlnvPhieuYcktclHdr;
 
-public class QlnvPhieuKtclHdrSpecification {
-	public static Specification<QlnvPhieuKtclHdr> buildSearchQuery(final @Valid QlnvPhieuKtclSearchReq objReq) {
-		return new Specification<QlnvPhieuKtclHdr>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+public class QlnvPhieuYcktclHdrSpecification {
+	public static Specification<QlnvPhieuYcktclHdr> buildSearchQuery(final @Valid QlnvPhieuYcktclSearchReq objReq) {
+		return new Specification<QlnvPhieuYcktclHdr>() {
+			private static final long serialVersionUID = 5629977346976896006L;
 
 			@Override
-			public Predicate toPredicate(Root<QlnvPhieuKtclHdr> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+			public Predicate toPredicate(Root<QlnvPhieuYcktclHdr> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
 				Predicate predicate = builder.conjunction();
 				if (ObjectUtils.isEmpty(objReq))
 					return predicate;
@@ -41,7 +35,6 @@ public class QlnvPhieuKtclHdrSpecification {
 				String maLo = objReq.getMaLo();
 				Date tuNgayKtra = objReq.getTuNgayKtra();
 				Date denNgayKtra = objReq.getDenNgayKtra();
-				String loaiBban = objReq.getLoaiBban();
 
 				root.fetch("children", JoinType.LEFT);
 
@@ -61,44 +54,17 @@ public class QlnvPhieuKtclHdrSpecification {
 				if (StringUtils.isNotBlank(maLo))
 					predicate.getExpressions().add(builder.and(builder.equal(root.get("maLo"), maLo)));
 				
-				if (StringUtils.isNotBlank(loaiBban))
-					predicate.getExpressions().add(builder.and(builder.equal(root.get("loaiBban"), loaiBban)));
 
 				if (ObjectUtils.isNotEmpty(tuNgayKtra) && ObjectUtils.isNotEmpty(denNgayKtra)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayKtra"), tuNgayKtra)));
-					predicate.getExpressions().add(builder.and(
-							builder.lessThan(root.get("ngayKtra"), new DateTime(denNgayKtra).plusDays(1).toDate())));
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayKtra"), new DateTime(denNgayKtra).plusDays(1).toDate())));
+				} else if (ObjectUtils.isNotEmpty(tuNgayKtra)) {
+					predicate.getExpressions()
+							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayKtra"), tuNgayKtra)));
+				} else if (ObjectUtils.isNotEmpty(denNgayKtra)) {
+					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayKtra"), new DateTime(denNgayKtra).plusDays(1).toDate())));
 				}
-
-				return predicate;
-			}
-		};
-	}
-
-	public static Specification<QlnvPhieuKtclHdr> buildFindByIdQuery(final @Valid IdSearchReq objReq) {
-		return new Specification<QlnvPhieuKtclHdr>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -1609160279354911278L;
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public Predicate toPredicate(Root<QlnvPhieuKtclHdr> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
-				Predicate predicate = builder.conjunction();
-				if (ObjectUtils.isEmpty(objReq))
-					return predicate;
-
-				Long id = objReq.getId();
-				String maDvi = objReq.getMaDvi();
-
-				Join<Object, Object> fetchParent = (Join<Object, Object>) root.fetch("children", JoinType.LEFT);
-
-				predicate.getExpressions().add(builder.and(builder.equal(root.get("id"), id)));
-				if (StringUtils.isNotBlank(maDvi))
-					predicate.getExpressions().add(builder.and(builder.equal(fetchParent.get("maDvi"), maDvi)));
 
 				return predicate;
 			}

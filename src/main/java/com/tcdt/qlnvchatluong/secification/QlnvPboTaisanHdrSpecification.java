@@ -13,6 +13,10 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.joda.time.DateTime;
+import org.springframework.data.jpa.domain.Specification;
+
+import javax.persistence.criteria.*;
 import javax.validation.Valid;
 import java.util.Date;
 
@@ -51,12 +55,12 @@ public class QlnvPboTaisanHdrSpecification {
                 if (ObjectUtils.isNotEmpty(tuNgayPbo) && ObjectUtils.isNotEmpty(denNgayPbo)) {
                     predicate.getExpressions()
                             .add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayPbo"), tuNgayPbo)));
-                    predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayPbo"), denNgayPbo)));
+                    predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayPbo"), new DateTime(denNgayPbo).plusDays(1).toDate())));
                 } else if (ObjectUtils.isNotEmpty(tuNgayPbo)) {
                     predicate.getExpressions()
                             .add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayPbo"), tuNgayPbo)));
                 } else if (ObjectUtils.isNotEmpty(denNgayPbo)) {
-                    predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayPbo"), denNgayPbo)));
+                    predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayPbo"), new DateTime(denNgayPbo).plusDays(1).toDate())));
                 }
 
                 return predicate;

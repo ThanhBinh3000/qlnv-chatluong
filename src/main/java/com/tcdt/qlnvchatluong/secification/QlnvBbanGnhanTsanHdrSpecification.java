@@ -2,6 +2,14 @@ package com.tcdt.qlnvchatluong.secification;
 
 import com.tcdt.qlnvchatluong.request.search.QlnvBbanGnhanTsanSearchReq;
 import com.tcdt.qlnvchatluong.table.QlnvBbanGnhanTsanHdr;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tcdt.qlnvchatluong.request.search.QlnvBbanGnhanTsanSearchReq;
+import com.tcdt.qlnvchatluong.request.search.QlnvPboTaisanSearchReq;
+import com.tcdt.qlnvchatluong.table.QlnvBbanGnhanTsanHdr;
+import com.tcdt.qlnvchatluong.table.QlnvPboTaisanDtl;
+import com.tcdt.qlnvchatluong.table.QlnvPboTaisanHdr;
+import com.tcdt.qlnvchatluong.util.Contains;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -12,6 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import javax.validation.Valid;
 import java.util.Date;
 
