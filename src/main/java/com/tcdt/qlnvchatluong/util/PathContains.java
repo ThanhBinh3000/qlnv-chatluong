@@ -27,16 +27,20 @@ public class PathContains {
 	public static final String VB_YEU_CAU_HANG = "/vban-yeu-cau-hang";
 	public static final String KQ_KIEM_DINH_MAU = "/kqua-kiem-dinh-mau";
 
-	// 6.3	Quản lý công  cụ dụng cụ và màng PVC
+	// 6.3 Quản lý công cụ dụng cụ và màng PVC
 	public static final String KQ_BAO_HANH = "/kqua-bao-hanh";
 	public static final String HOP_DONG = "/hop-dong";
 	public static final String PHAN_BO_CCDC = "/phan-bo-ccdc";
 	public static final String BB_GIAO_NHAN_TAI_SAN = "/bb-giao-nhan-tai-san";
 
-	// 6.5	 Quản lý nhu cầu tham gia bảo hiểm
+	// 6.5 Quản lý nhu cầu tham gia bảo hiểm
 	public static final String QL_GIA_TRI_BAO_HIEM = "/ql-gia-tri-bao-hiem";
 	public static final String HO_SO_KY_THUAT = "/hoso-kythuat";
 	public static final String QDINH_MMOC_TBI = "/qdinh-mmoc-tbi";
 	public static final String TTRANG_TAISAN = "/ttrang-taisan";
+
+	// 6.2 Quan ly cong cu dung cu va mang PVC
+	public static final String QL_CONG_CU = "/ql-ccu";
+	public static final String QL_DMUC_TSAN = "/ql-dmuc-tsan";
 
 }

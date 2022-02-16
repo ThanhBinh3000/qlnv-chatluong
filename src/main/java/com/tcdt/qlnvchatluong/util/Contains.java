@@ -1,5 +1,7 @@
 package com.tcdt.qlnvchatluong.util;
 
+import java.util.Map;
+
 public class Contains {
 	public static final String FORMAT_DATE_STR = "dd/MM/yyyy";
 	public static final String FORMAT_DATE_TIME_STR = "dd/MM/yyyy HH:mm:ss";
@@ -41,7 +43,8 @@ public class Contains {
 	public static final String PHIEU_NX = "PH";
 	public static final String BANG_KE = "BK";
 	public static final String BIEN_BAN = "BB";
-	
+	public static final String HO_SO = "HS";
+
 	// Loai bien ban kiem tra chat luong
 	public static final String BB_KTCL_HANG = "00";
 	public static final String BB_KTCL_VAT_TU = "01";
@@ -54,4 +57,22 @@ public class Contains {
 	public static final String SU_DUNG_DUOC = "Sử dụng được";
 	public static final String DA_HONG = "Đã hỏng";
 
+	// Trang thai dinh muc
+	public static final String TT_DMUC_APDUNG = "00";// ap dung
+	public static final String TT_DMUC_DUNG = "01";// dung ap dung
+
+	// Loai dinh muc
+	public static final String DINHMUC_NHAP = "00";
+	public static final String DINHMUC_XUAT = "01";
+	public static final String DINHMUC_BQUAN = "02";
+
+	public static final Map<String, String> mpLoaiDmuc;
+	static {
+		mpLoaiDmuc = Maps.<String, String>buildMap().put(Contains.DINHMUC_NHAP, "Nhập")
+				.put(Contains.DINHMUC_XUAT, "Xuất").put(Contains.DINHMUC_BQUAN, "Bảo quản").get();
+	}
+
+	public static String getLoaiDmuc(String key) {
+		return Contains.mpLoaiDmuc.get(key);
+	}
 }
