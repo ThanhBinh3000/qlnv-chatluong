@@ -1,7 +1,6 @@
 package com.tcdt.qlnvchatluong.table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,10 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+
 @Entity
 @Table(name = "QLNV_BBAN_XNHAN_KTCL_DTL")
 @Data
-public class QlnvBbanXnhanKtclDtl {
+public class QlnvBbanXnhanKtclDtl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -16,6 +16,8 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +26,7 @@ import java.util.List;
 @Table(name = "QLNV_BBAN_XNHAN_KTCL_HDR")
 @Data
 @NamedEntityGraph(name = "QLNV_BBAN_XNHAN_KTCL_HDR.children", attributeNodes = @NamedAttributeNode("children"))
-public class QlnvBbanXnhanKtclHdr {
+public class QlnvBbanXnhanKtclHdr implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

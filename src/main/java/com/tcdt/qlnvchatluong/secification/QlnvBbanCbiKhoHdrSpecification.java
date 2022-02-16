@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -15,10 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.Specification;
 
-import com.tcdt.qlnvchatluong.request.IdSearchReq;
 import com.tcdt.qlnvchatluong.request.search.QlnvBbanCbiKhoSearchReq;
 import com.tcdt.qlnvchatluong.table.QlnvBbanCbiKhoHdr;
-import com.tcdt.qlnvchatluong.table.QlnvBbanNtkklHdr;
 
 public class QlnvBbanCbiKhoHdrSpecification {
 	public static Specification<QlnvBbanCbiKhoHdr> buildSearchQuery(final @Valid QlnvBbanCbiKhoSearchReq objReq) {
@@ -64,12 +61,14 @@ public class QlnvBbanCbiKhoHdrSpecification {
 				if (ObjectUtils.isNotEmpty(tuNgayLap) && ObjectUtils.isNotEmpty(denNgayLap)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayLap"), tuNgayLap)));
-					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayLap"), new DateTime(denNgayLap).plusDays(1).toDate())));
+					predicate.getExpressions().add(builder
+							.and(builder.lessThan(root.get("ngayLap"), new DateTime(denNgayLap).plusDays(1).toDate())));
 				} else if (ObjectUtils.isNotEmpty(tuNgayLap)) {
 					predicate.getExpressions()
 							.add(builder.and(builder.greaterThanOrEqualTo(root.get("ngayLap"), tuNgayLap)));
 				} else if (ObjectUtils.isNotEmpty(denNgayLap)) {
-					predicate.getExpressions().add(builder.and(builder.lessThan(root.get("ngayLap"), new DateTime(denNgayLap).plusDays(1).toDate())));
+					predicate.getExpressions().add(builder
+							.and(builder.lessThan(root.get("ngayLap"), new DateTime(denNgayLap).plusDays(1).toDate())));
 				}
 
 				return predicate;

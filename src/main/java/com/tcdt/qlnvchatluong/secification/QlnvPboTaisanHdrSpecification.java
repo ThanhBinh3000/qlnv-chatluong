@@ -1,11 +1,6 @@
 package com.tcdt.qlnvchatluong.secification;
 
-import com.tcdt.qlnvchatluong.request.search.QlnvPboTaisanSearchReq;
-import com.tcdt.qlnvchatluong.table.QlnvPboTaisanDtl;
-import com.tcdt.qlnvchatluong.table.QlnvPboTaisanHdr;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.jpa.domain.Specification;
+import java.util.Date;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -13,12 +8,16 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.validation.Valid;
+
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.*;
-import javax.validation.Valid;
-import java.util.Date;
+import com.tcdt.qlnvchatluong.request.search.QlnvPboTaisanSearchReq;
+import com.tcdt.qlnvchatluong.table.QlnvPboTaisanDtl;
+import com.tcdt.qlnvchatluong.table.QlnvPboTaisanHdr;
 
 public class QlnvPboTaisanHdrSpecification {
     public static Specification<QlnvPboTaisanHdr> buildSearchQuery(final @Valid QlnvPboTaisanSearchReq objReq) {

@@ -1,26 +1,11 @@
 package com.tcdt.qlnvchatluong.controller;
 
-import com.tcdt.qlnvchatluong.enums.EnumResponse;
-import com.tcdt.qlnvchatluong.repository.QlnvQdinhTaisanHdrRepository;
-import com.tcdt.qlnvchatluong.request.IdSearchReq;
-import com.tcdt.qlnvchatluong.request.object.QlnvQdinhTaisanDtlReq;
-import com.tcdt.qlnvchatluong.request.object.QlnvQdinhTaisanHdrReq;
-import com.tcdt.qlnvchatluong.request.object.StatusReq;
-import com.tcdt.qlnvchatluong.request.search.QlnvQdinhTaisanSearchReq;
-import com.tcdt.qlnvchatluong.response.BaseResponse;
-import com.tcdt.qlnvchatluong.secification.QlnvQdinhTaisanHdrSpecification;
-import com.tcdt.qlnvchatluong.table.QlnvQdinhTaisanDtl;
-import com.tcdt.qlnvchatluong.table.QlnvQdinhTaisanHdr;
-import com.tcdt.qlnvchatluong.table.catalog.QlnvDmDonvi;
-import com.tcdt.qlnvchatluong.util.Contains;
-import com.tcdt.qlnvchatluong.util.ObjectMapperUtils;
-import com.tcdt.qlnvchatluong.util.PaginationSet;
-import com.tcdt.qlnvchatluong.util.PathContains;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,10 +23,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+import com.tcdt.qlnvchatluong.enums.EnumResponse;
+import com.tcdt.qlnvchatluong.repository.QlnvQdinhTaisanHdrRepository;
+import com.tcdt.qlnvchatluong.request.IdSearchReq;
+import com.tcdt.qlnvchatluong.request.object.QlnvQdinhTaisanDtlReq;
+import com.tcdt.qlnvchatluong.request.object.QlnvQdinhTaisanHdrReq;
+import com.tcdt.qlnvchatluong.request.object.StatusReq;
+import com.tcdt.qlnvchatluong.request.search.QlnvQdinhTaisanSearchReq;
+import com.tcdt.qlnvchatluong.response.BaseResponse;
+import com.tcdt.qlnvchatluong.secification.QlnvQdinhTaisanHdrSpecification;
+import com.tcdt.qlnvchatluong.table.QlnvQdinhTaisanDtl;
+import com.tcdt.qlnvchatluong.table.QlnvQdinhTaisanHdr;
+import com.tcdt.qlnvchatluong.util.Contains;
+import com.tcdt.qlnvchatluong.util.ObjectMapperUtils;
+import com.tcdt.qlnvchatluong.util.PaginationSet;
+import com.tcdt.qlnvchatluong.util.PathContains;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
@@ -56,7 +58,7 @@ public class QlnvQdinhTsanHdrController extends BaseController {
 	@PostMapping(value = PathContains.URL_TAO_MOI, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<BaseResponse> insert(@Valid HttpServletRequest request,
-											   @RequestBody QlnvQdinhTaisanHdrReq objReq) {
+			@RequestBody QlnvQdinhTaisanHdrReq objReq) {
 		BaseResponse resp = new BaseResponse();
 		try {
 			// Add thong tin hdr
@@ -137,13 +139,14 @@ public class QlnvQdinhTsanHdrController extends BaseController {
 	@ApiOperation(value = "Cập nhật quyết định", response = List.class)
 	@PostMapping(value = PathContains.URL_CAP_NHAT, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> update(@Valid HttpServletRequest request,
-											   @RequestBody QlnvQdinhTaisanHdrReq objReq) {
+			@RequestBody QlnvQdinhTaisanHdrReq objReq) {
 		BaseResponse resp = new BaseResponse();
 		try {
 			if (StringUtils.isEmpty(objReq.getId()))
 				throw new Exception("Sửa thất bại, không tìm thấy dữ liệu");
 
-			Optional<QlnvQdinhTaisanHdr> qOptional = qlnvQdinhTaisanHdrRepository.findById(Long.valueOf(objReq.getId()));
+			Optional<QlnvQdinhTaisanHdr> qOptional = qlnvQdinhTaisanHdrRepository
+					.findById(Long.valueOf(objReq.getId()));
 			if (!qOptional.isPresent())
 				throw new Exception("Không tìm thấy dữ liệu cần sửa");
 
@@ -183,8 +186,7 @@ public class QlnvQdinhTsanHdrController extends BaseController {
 			if (StringUtils.isEmpty(id))
 				throw new UnsupportedOperationException("Không tồn tại bản ghi");
 
-			Optional<QlnvQdinhTaisanHdr> qOptional = qlnvQdinhTaisanHdrRepository
-					.findById(Long.parseLong(id));
+			Optional<QlnvQdinhTaisanHdr> qOptional = qlnvQdinhTaisanHdrRepository.findById(Long.parseLong(id));
 			if (!qOptional.isPresent())
 				throw new UnsupportedOperationException("Không tồn tại bản ghi");
 
@@ -212,27 +214,27 @@ public class QlnvQdinhTsanHdrController extends BaseController {
 				throw new Exception("Không tìm thấy dữ liệu");
 
 			// Lay thong tin don vi quan ly
-			QlnvDmDonvi objDvi = getDvi(req);
+//			QlnvDmDonvi objDvi = getDvi(req);
 //			if (!objDvi.getCapDvi().equals(Contains.CAP_CUC))
 //				throw new UnsupportedOperationException("Người sử dụng không phải cấp chi cục để phê duyệt");
 
 			String status = stReq.getTrangThai() + entity.get().getTrangThai();
 			switch (status) {
-				case Contains.CHO_DUYET + Contains.TAO_MOI:
-					entity.get().setNguoiGuiDuyet(getUserName(req));
-					entity.get().setNgayGuiDuyet(getDateTimeNow());
-					break;
-				case Contains.TU_CHOI + Contains.CHO_DUYET:
-					entity.get().setNguoiPduyet(getUserName(req));
-					entity.get().setNgayPduyet(getDateTimeNow());
-					entity.get().setLdoTuchoi(stReq.getLyDo());
-					break;
-				case Contains.DUYET + Contains.CHO_DUYET:
-					entity.get().setNguoiPduyet(getUserName(req));
-					entity.get().setNgayPduyet(getDateTimeNow());
-					break;
-				default:
-					throw new Exception("Phê duyệt không thành công");
+			case Contains.CHO_DUYET + Contains.TAO_MOI:
+				entity.get().setNguoiGuiDuyet(getUserName(req));
+				entity.get().setNgayGuiDuyet(getDateTimeNow());
+				break;
+			case Contains.TU_CHOI + Contains.CHO_DUYET:
+				entity.get().setNguoiPduyet(getUserName(req));
+				entity.get().setNgayPduyet(getDateTimeNow());
+				entity.get().setLdoTuchoi(stReq.getLyDo());
+				break;
+			case Contains.DUYET + Contains.CHO_DUYET:
+				entity.get().setNguoiPduyet(getUserName(req));
+				entity.get().setNgayPduyet(getDateTimeNow());
+				break;
+			default:
+				throw new Exception("Phê duyệt không thành công");
 			}
 
 			entity.get().setTrangThai(stReq.getTrangThai());
