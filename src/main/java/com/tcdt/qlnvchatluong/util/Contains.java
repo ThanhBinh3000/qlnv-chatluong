@@ -23,9 +23,9 @@ public class Contains {
 	public static final String CCUC_DUYET = "06";
 	public static final String CUC_DUYET = "07";
 	public static final String TCUC_DUYET = "08";
-	public static final String TK_DUYET = "06";// Trang thai trung gian, thu kho phe duyet
-	public static final String KTV_DUYET = "07";// Trang thai trung gian, ky thuat vien phe duyet
-	public static final String KTT_DUYET = "08";// Trang thai trung gian, ke toan truong phe duyet
+	public static final String TK_DUYET = "09";// Trang thai trung gian, thu kho phe duyet
+	public static final String KTV_DUYET = "10";// Trang thai trung gian, ky thuat vien phe duyet
+	public static final String KTT_DUYET = "11";// Trang thai trung gian, ke toan truong phe duyet
 
 	// Loai nhap xuat
 	public static final String LOAI_NHAP = "N";
@@ -45,6 +45,18 @@ public class Contains {
 	public static final String BIEN_BAN = "BB";
 	public static final String HO_SO = "HS";
 
+	// Loai bien ban kiem tra chat luong
+	public static final String BB_KTCL_HANG = "00";
+	public static final String BB_KTCL_VAT_TU = "01";
+	public static final String BB_KTCL_HU_HONG = "02";
+
+	// Hop Dong: Loai tai san
+	public static final String HD_CONG_CU_DUNG_CU = "00";
+
+	// Tinh trang tai san
+	public static final String SU_DUNG_DUOC = "Sử dụng được";
+	public static final String DA_HONG = "Đã hỏng";
+
 	// Trang thai dinh muc
 	public static final String TT_DMUC_APDUNG = "00";// ap dung
 	public static final String TT_DMUC_DUNG = "01";// dung ap dung
@@ -63,5 +75,4 @@ public class Contains {
 	public static String getLoaiDmuc(String key) {
 		return Contains.mpLoaiDmuc.get(key);
 	}
-
 }

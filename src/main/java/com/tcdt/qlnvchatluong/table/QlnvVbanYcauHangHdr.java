@@ -17,8 +17,6 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -26,30 +24,25 @@ import org.hibernate.annotations.FetchMode;
 import lombok.Data;
 
 @Entity
-@Table(name = "QLNV_PHIEU_KTCL_HDR")
+@Table(name = "QLNV_VBAN_YCAU_HANG_HDR")
 @Data
-@NamedEntityGraph(name = "QLNV_PHIEU_KTCL_HDR.children", attributeNodes = @NamedAttributeNode("children"))
-public class QlnvPhieuKtclHdr implements Serializable {
+@NamedEntityGraph(name = "QLNV_VBAN_YCAU_HANG_HDR.children", attributeNodes = @NamedAttributeNode("children"))
+public class QlnvVbanYcauHangHdr implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "QLNV_PHIEU_KTCL_HDR_SEQ")
-	@SequenceGenerator(sequenceName = "QLNV_PHIEU_KTCL_HDR_SEQ", allocationSize = 1, name = "QLNV_PHIEU_KTCL_HDR_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "QLNV_VBAN_YCAU_HANG_HDR_SEQ")
+	@SequenceGenerator(sequenceName = "QLNV_VBAN_YCAU_HANG_HDR_SEQ", allocationSize = 1, name = "QLNV_VBAN_YCAU_HANG_HDR_SEQ")
 	private Long id;
-
-	String soPhieu;
+	
+	String soYcau;
 	String maDvi;
-	String maKho;
-	@Temporal(TemporalType.DATE)
-	Date ngayKtra;
-	String maHhoa;
-	String tenHhoa;
-	String nguoiBan;
-	String diaChi;
-	String ketLuan;
+	String nguoiDdien;
+	Date ngayYcau;
+	String cvuDdien;
 	Date ngayTao;
 	String nguoiTao;
 	Date ngaySua;
@@ -59,35 +52,24 @@ public class QlnvPhieuKtclHdr implements Serializable {
 	String ldoTuchoi;
 	Date ngayPduyet;
 	String nguoiPduyet;
-	Long khoiLuong;
 	String trangThai;
-	String maNgan;
-	String maLo;
 	String soHdong;
-	Long lanSuaChua;
-	Long lanKtra;
-	Date ngayHhanBhanh;
-	String loaiBban;
-	String ktvPduyet;
-	Date ngayKtvPduyet;
-	Date ngayHdong;
-
+	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinColumn(name = "id_hdr")
-	private List<QlnvPhieuKtclDtl> children = new ArrayList<>();
+	private List<QlnvVbanYcauHangDtl> children = new ArrayList<>();
 
-	public void setChildren(List<QlnvPhieuKtclDtl> children) {
+	public void setChildren(List<QlnvVbanYcauHangDtl> children) {
 		this.children.clear();
-		for (QlnvPhieuKtclDtl child : children) {
+		for (QlnvVbanYcauHangDtl child : children) {
 			child.setParent(this);
 		}
 		this.children.addAll(children);
 	}
 
-	public void addChild(QlnvPhieuKtclDtl child) {
+	public void addChild(QlnvVbanYcauHangDtl child) {
 		child.setParent(this);
 		this.children.add(child);
 	}
-
 }

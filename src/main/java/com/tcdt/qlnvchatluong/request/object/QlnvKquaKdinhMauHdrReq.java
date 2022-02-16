@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,70 +13,57 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-public class QlnvPhieuKtclHdrReq {
+public class QlnvKquaKdinhMauHdrReq {
+
 	@ApiModelProperty(notes = "Bắt buộc set đối với update")
 	private Long id;
+	
 	@NotNull(message = "Không được để trống")
-	@Size(max = 50, message = "Số phiếu không được vượt quá 50 ký tự")
-	String soPhieu;
-
-	String maDvi;
-
+	@Size(max = 50, message = "Số biên bản không được vượt quá 50 ký tự")
+	String soBban;
+	
 	@NotNull(message = "Không được để trống")
-	@Size(max = 50, message = "Mã kho không được vượt quá 50 ký tự")
-	String maKho;
-
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Contains.FORMAT_DATE_STR)
-	@Past
-	Date ngayKtra;
-
+	Date ngayKdinh;
+	
+	@NotNull(message = "Không được để trống")
+	@Size(max = 250, message = "Đơn vị kiểm định không được vượt quá 250 ký tự")
+	String dviKdinh;
+	
+	@NotNull(message = "Không được để trống")
+	@Size(max = 50, message = "Mã đơn vị không được vượt quá 50 ký tự")
+	String maDvi;
+	
 	@NotNull(message = "Không được để trống")
 	@Size(max = 50, message = "Mã hàng hóa không được vượt quá 50 ký tự")
 	String maHhoa;
-
+	
 	@NotNull(message = "Không được để trống")
 	@Size(max = 250, message = "Tên hàng hóa không được vượt quá 250 ký tự")
 	String tenHhoa;
-
-	@NotNull(message = "Không được để trống")
-	@Size(max = 250, message = "Người bán hàng không được vượt quá 250 ký tự")
-	String nguoiBan;
-
+	
 	@Size(max = 250, message = "Địa chỉ không được vượt quá 250 ký tự")
 	String diaChi;
-
-	@Size(max = 250, message = "Kết luận không được vượt quá 250 ký tự")
-	String ketLuan;
-
-	Long khoiLuong;
-
+	
 	@NotNull(message = "Không được để trống")
-	@Size(max = 50, message = "Số hợp đồng không được vượt quá 50 ký tự")
-	String soHdong;
-
-	Long lanSuaChua;
-	Long lanKtra;
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Contains.FORMAT_DATE_STR)
-	@Past
-	Date ngayHhanBhanh;
-
-	//@NotNull(message = "Không được để trống")
-	@Size(max = 2, message = "Trạng thái không được vượt quá 2 ký tự")
-	String trangThai;
-
+	@Size(max = 50, message = "Mã kho không được vượt quá 50 ký tự")
+	String maKho;
+	
 	@NotNull(message = "Không được để trống")
 	@Size(max = 50, message = "Mã ngăn không được vượt quá 50 ký tự")
 	String maNgan;
-
-	@NotNull(message = "Không được để trống")
-	@Size(max = 50, message = "Mã lô không được vượt quá 50 ký tự")
-	String maLo;
-
-	@Size(max = 250, message = "Lý do từ chối không được vượt quá 250 ký tự")
-	String ldoTuchoi;
-
-	String loaiBban;
 	
-	private List<QlnvPhieuKtclDtlReq> detail;
+	@NotNull(message = "Không được để trống")
+	@Size(max = 50, message = "Mã Lô không được vượt quá 50 ký tự")
+	String maLo;
+	
+	@NotNull(message = "Không được để trống")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Contains.FORMAT_DATE_STR)
+	Date ngayNhanMau;
+	
+	@NotNull(message = "Không được để trống")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Contains.FORMAT_DATE_STR)
+	Date ngayTraKqua;
+	
+	private List<QlnvKquaKdinhMauDtlReq> detail;
 }
